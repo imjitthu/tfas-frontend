@@ -16,6 +16,7 @@ pipeline { //pipeline
                     git 'https://github.com/imjitthu/tfas-frontend.git'
                     sh'''
                         echo 'installing frontend server'
+                        chmod 600 test.pem
                         terraform init
                         terraform apply -auto-approve
                         sleep 3s
