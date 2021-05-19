@@ -13,17 +13,17 @@ resource "aws_instance" "frontend" {
     "Name" = "${var.COMPONENT}-Server"
   }
 
-connection {
-  host = aws_instance.frontend.public_ip
-  type = "ssh"
-  user = "${var.USER}"
-  private_key = file("${local.key_path}")
-  #password = "${var.PASSWORD}"
-}
+# connection {
+#   host = aws_instance.frontend.public_ip
+#   type = "ssh"
+#   user = "${var.USER}"
+#   private_key = file("${local.key_path}")
+#   #password = "${var.PASSWORD}"
+# }
 
-provisioner "remote-exec" {
-  inline = [ "echo connected successfully" ]
-}
+# provisioner "remote-exec" {
+#   inline = [ "echo connected successfully" ]
+# }
 
 provisioner "local-exec" {
   command = "pwd; echo ${aws_instance.frontend.public_ip} component=${var.COMPONENT} ansible_user=root ansible_password=DevOps321 >> /temp/inv.txt"
