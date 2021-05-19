@@ -8,6 +8,12 @@ resource "aws_instance" "frontend" {
     "Name" = "${var.COMPONENT}-Server"
   }
 
+connection {
+  type = "ssh"
+  user = "root"
+  password = "${var.PASSWORD}"
+}
+
 provisioner "local-exec" {
   command = "ansible-playbook -i ${aws_instance.frontend.private_ip}, -u root -p ${var.PASSWORD} ${var.COMPONENT}.yml"
 }
