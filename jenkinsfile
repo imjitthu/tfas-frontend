@@ -20,10 +20,7 @@ pipeline { //pipeline
                         terraform init
                         terraform apply -auto-approve
                     '''
-                    sh "pwd"
-                    sh "cd /var/lib/jenkins/workspace/rs-tf-app"
-                    sh "pwd"
-                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'inv.txt', playbook: 'frontend'
+                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: '/var/lib/jenkins/workspace/rs-tf-app/inv.txt', playbook: 'frontend'
                       } //Frontend steps
                 } //Frontend stage
             } //with credentials
