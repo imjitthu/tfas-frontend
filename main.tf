@@ -20,7 +20,7 @@ provisioner "remote-exec" {
 }
 
 provisioner "local-exec" {
-  command = "ansible-playbook -i ${aws_instance.frontend.private_ip}, -u root -k ${var.PASSWORD} ${var.COMPONENT}.yml"
+  command = "ansible-playbook -i ${aws_instance.frontend.private_ip}, ${var.COMPONENT}.yml -u root -p ${var.PASSWORD}"
 }
 }
 
