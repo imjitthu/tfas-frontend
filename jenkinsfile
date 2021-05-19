@@ -17,7 +17,7 @@ pipeline { //pipeline
                     sh "echo 'installing frontend server'"
                     sh "terraform init"    
                     sh "terraform apply -auto-approve"   
-                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: '/var/lib/jenkins/workspace/rs-tf-app/inv.txt', playbook: 'frontend.yml'
+                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'inv.txt', playbook: 'frontend.yml'
                       } //Frontend steps
                 } //Frontend stage
             } //with credentials
