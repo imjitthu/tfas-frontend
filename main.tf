@@ -1,8 +1,13 @@
+locals {
+  key_name = "test"
+  key_path = "test.pem"
+}
+
 resource "aws_instance" "frontend" {
   # aws_spot_instabce_request for spot instance
   ami = "${var.AMI}"
   instance_type = "${var.INSTANCE_TYPE}"
-  key_name = "test"
+  key_name = local.key_name
   # spot_type = "one-time"  aws_spot_instance_request
   tags = {
     "Name" = "${var.COMPONENT}-Server"
@@ -12,7 +17,7 @@ connection {
   host = aws_instance.frontend.private_ip
   type = "ssh"
   user = "root"
-  private_key = "test.pem"
+  private_key = file("${local.key_path}")
   #private_key = file("${path.module}")
   #password = "${var.PASSWORD}"
 }
