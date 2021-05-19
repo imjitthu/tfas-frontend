@@ -44,7 +44,7 @@
    name: nginx
   ignore_errors: yes
 
-# - name: Include Common Role for OS Prereqs
-#   include_role:
-#     name: common
-#     tasks_from: os
+- name: Include Common Role for OS Prereqs
+  shell: | 
+    set-hostnem {{COMPONENT}}
+    echo FrontEnd Server is Ready

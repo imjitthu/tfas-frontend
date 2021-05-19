@@ -7,5 +7,5 @@
   tasks:
     
     - name: Load frontend Role
-      import_role:
+      role:
         name: frontend
