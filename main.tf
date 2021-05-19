@@ -26,7 +26,7 @@ resource "aws_instance" "frontend" {
 # }
 
 provisioner "local-exec" {
-  command = "pwd; echo ${aws_instance.frontend.public_ip} component=${var.COMPONENT} ansible_user=root ansible_password=DevOps321 >> /temp/inv.txt"
+  command = "pwd; echo ${aws_instance.frontend.public_ip} component=${var.COMPONENT} ansible_user=root ansible_password=DevOps321 >> inv.txt"
   #command = "ansible-playbook -i ${aws_instance.frontend.public_ip}, --private-key ${local.key_path} ${var.COMPONENT}.yml"
   #echo $IP component=${component} ansible_user=root ansible_password=DevOps321 >>inv
 }
