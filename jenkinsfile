@@ -1,0 +1,27 @@
+pipeline { //pipeline
+
+    agent any
+    options { disableConcurrentBuilds() }
+
+    // tools {
+    // ansible 'ansibletool'
+    // }
+
+    stages ('Setup Roboshop Application') { //stages
+        stage ('Setup Frontend Server') { //Frontend stage
+            steps { //Frontend steps
+            //sh "ansible-playbook -i 172.31.76.31, --private-key=test.pem frontend.yml"
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    echo 'Downloading from GITHub'
+                    git 'https://github.com/imjitthu/tfas-frontend.git'
+                    sh'''
+                        echo 'installing frontend server'
+                        terraform init
+                        terraform apply -auto-approve
+                        sleep 3s
+                    '''
+                      } //Frontend steps
+                } //Frontend stage
+            } //with credentials
+        } //stages
+    } //pipeline
