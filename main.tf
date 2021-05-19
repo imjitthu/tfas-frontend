@@ -14,7 +14,7 @@ resource "aws_instance" "frontend" {
   }
 
 connection {
-  host = aws_instance.frontend.private_ip
+  host = aws_instance.frontend.public_ip
   type = "ssh"
   user = "root"
   private_key = file("${local.key_path}")
