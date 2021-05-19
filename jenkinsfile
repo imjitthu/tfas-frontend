@@ -14,12 +14,9 @@ pipeline { //pipeline
             withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     echo 'Downloading from GITHub'
                     git 'https://github.com/imjitthu/tfas-frontend.git'
-                    sh'''
-                        echo 'installing frontend server'
-                        chmod 600 test.pem
-                        terraform init
-                        terraform apply -auto-approve
-                    '''
+                    sh "echo 'installing frontend server'"
+                    sh "terraform init"    
+                    sh "terraform apply -auto-approve"   
                     ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: '/var/lib/jenkins/workspace/rs-tf-app/inv.txt', playbook: 'frontend.yml'
                       } //Frontend steps
                 } //Frontend stage
