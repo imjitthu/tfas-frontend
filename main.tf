@@ -12,7 +12,9 @@ connection {
   host = aws_instance.frontend.private_ip
   type = "ssh"
   user = "root"
-  password = "${var.PASSWORD}"
+  private_key = file("${test.pem}")
+  #private_key = file("${path.module}")
+  #password = "${var.PASSWORD}"
 }
 
 provisioner "remote-exec" {
