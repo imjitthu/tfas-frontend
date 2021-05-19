@@ -12,7 +12,6 @@ pipeline { //pipeline
             steps { //Frontend steps
             //sh "ansible-playbook -i 172.31.76.31, --private-key=test.pem frontend.yml"
             withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    echo 'Downloading from GITHub'
                     git 'https://github.com/imjitthu/tfas-frontend.git'
                     sh "echo 'installing frontend server'"
                     sh "terraform init"    
