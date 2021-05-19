@@ -18,7 +18,6 @@ connection {
   type = "ssh"
   user = "root"
   private_key = file("${local.key_path}")
-  #private_key = file("${path.module}")
   #password = "${var.PASSWORD}"
 }
 
