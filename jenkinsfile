@@ -19,7 +19,6 @@ pipeline { //pipeline
                         chmod 600 test.pem
                         terraform init
                         terraform apply -auto-approve
-                        sleep 3s
                     '''
                       } //Frontend steps
                 } //Frontend stage
