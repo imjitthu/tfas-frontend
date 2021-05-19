@@ -12,7 +12,7 @@ connection {
   host = aws_instance.frontend.private_ip
   type = "ssh"
   user = "root"
-  private_key = file("${'test.pem'}")
+  private_key = "test.pem"
   #private_key = file("${path.module}")
   #password = "${var.PASSWORD}"
 }
