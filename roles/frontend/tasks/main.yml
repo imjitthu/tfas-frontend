@@ -1,3 +1,9 @@
+- name: Include Common Role for OS Prereqs
+  shell: | 
+    set-hostnem {{COMPONENT}}
+    echo FrontEnd Server is Ready
+  become: yes
+
 - name: Install NGINX
   yum: 
     name: nginx
@@ -43,8 +49,3 @@
    state: restarted
    name: nginx
   ignore_errors: yes
-
-- name: Include Common Role for OS Prereqs
-  shell: | 
-    set-hostnem {{COMPONENT}}
-    echo FrontEnd Server is Ready
