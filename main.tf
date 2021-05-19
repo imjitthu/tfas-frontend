@@ -14,6 +14,10 @@ connection {
   password = "${var.PASSWORD}"
 }
 
+provisioner "remote-exec" {
+  inline = [ "set-hostname ${var.COMPONENT}" ]
+}
+
 provisioner "local-exec" {
   command = "ansible-playbook -i ${aws_instance.frontend.private_ip}, -u root -p ${var.PASSWORD} ${var.COMPONENT}.yml"
 }
