@@ -18,7 +18,7 @@ connection {
 }
 
 provisioner "remote-exec" {
-  inline = [ "set-hostname ${var.COMPONENT}" ]
+  inline = [ "set-hostname '${var.COMPONENT}'" ]
 }
 
 provisioner "local-exec" {
