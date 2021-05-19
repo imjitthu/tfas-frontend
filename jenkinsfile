@@ -16,7 +16,7 @@ pipeline { //pipeline
                     sh "terraform init"    
                     sh "terraform apply -auto-approve" 
                     //sh "mkinv.sh"  
-                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
+                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: '/var/lib/jenkins/workspace/rs-tf-app/frontend_inv', playbook: 'frontend.yml'
                       } //Frontend steps
                 } //Frontend stage
             } //with credentials
