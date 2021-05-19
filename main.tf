@@ -9,6 +9,7 @@ resource "aws_instance" "frontend" {
   }
 
 connection {
+  host = aws_instance.frontend.private_ip
   type = "ssh"
   user = "root"
   password = "${var.PASSWORD}"
