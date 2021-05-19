@@ -16,7 +16,7 @@ resource "aws_instance" "frontend" {
 connection {
   host = aws_instance.frontend.public_ip
   type = "ssh"
-  user = "centos"
+  user = "${var.USER}"
   private_key = file("${local.key_path}")
   #password = "${var.PASSWORD}"
 }

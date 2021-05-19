@@ -9,3 +9,4 @@ variable "DOMAIN" {default = ""}
 variable "COMPONENT" {}
 variable "AMI" {}
 variable "PASSWORD" {}
+variable "USER" {}
