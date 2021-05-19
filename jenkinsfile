@@ -16,7 +16,7 @@ pipeline { //pipeline
                     sh "echo 'installing frontend server'"
                     sh "terraform init"    
                     sh "terraform apply -auto-approve" 
-                    sh "mkinv.sh"  
+                    //sh "mkinv.sh"  
                     ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'inv.txt', playbook: 'frontend.yml'
                       } //Frontend steps
                 } //Frontend stage
