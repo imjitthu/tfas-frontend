@@ -22,6 +22,7 @@ pipeline { //pipeline
                     '''
                     sh "pwd"
                     sh "cd /var/lib/jenkins/workspace/rs-tf-app"
+                    sh "pwd"
                     ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'inv.txt', playbook: 'frontend'
                       } //Frontend steps
                 } //Frontend stage
