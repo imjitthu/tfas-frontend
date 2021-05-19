@@ -20,6 +20,7 @@ pipeline { //pipeline
                         terraform init
                         terraform apply -auto-approve
                     '''
+                    sh "pwd"
                     ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'inv.txt', playbook: 'frontend'
                       } //Frontend steps
                 } //Frontend stage
