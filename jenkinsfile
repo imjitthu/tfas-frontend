@@ -3,6 +3,10 @@ pipeline { //pipeline
     agent any
     options { disableConcurrentBuilds() }
 
+    tools {
+        terraform: terraformtool
+    }
+
     // tools {
     // ansible 'ansibletool'
     // }
