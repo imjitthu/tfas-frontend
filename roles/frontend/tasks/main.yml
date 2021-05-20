@@ -4,48 +4,48 @@
     echo FrontEnd Server is Ready
   become: yes
 
-- name: Install NGINX
-  yum: 
-    name: nginx
-    state: present
+# - name: Install NGINX
+#   yum: 
+#     name: nginx
+#     state: present
 
-- name: Delete content from /usr/share/nginx/html
-  file:
-    state: absent
-    path: /usr/share/nginx/html
+# - name: Delete content from /usr/share/nginx/html
+#   file:
+#     state: absent
+#     path: /usr/share/nginx/html
 
-- name: Create content from /usr/share/nginx/html
-  file:
-    state: directory
-    path: /usr/share/nginx/html
+# - name: Create content from /usr/share/nginx/html
+#   file:
+#     state: directory
+#     path: /usr/share/nginx/html
 
-- name: Copy the HTDOCS content and deploy under the Nginx path
-  copy:
-    src: static/
-    dest: /usr/share/nginx/html
+# - name: Copy the HTDOCS content and deploy under the Nginx path
+#   copy:
+#     src: static/
+#     dest: /usr/share/nginx/html
 
-# - name: Move Artifiact Files /usr/share/nginx/html/
-#   shell: |
-#     cd /usr/share/nginx/html
-#     mv static/* .
-#     rm -rf static
+# # - name: Move Artifiact Files /usr/share/nginx/html/
+# #   shell: |
+# #     cd /usr/share/nginx/html
+# #     mv static/* .
+# #     rm -rf static
 
-#mv localhost.conf /etc/nginx/default.d/roboshop.conf
+# #mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-- name: Setup /etc/nginx/default.d/roboshop.conf
-  template:
-    src: roboshop.conf
-    dest: /etc/nginx/default.d/roboshop.conf
+# - name: Setup /etc/nginx/default.d/roboshop.conf
+#   template:
+#     src: roboshop.conf
+#     dest: /etc/nginx/default.d/roboshop.conf
 
-- name: Update Nginx Configuration
-  template:
-   src: nginx.conf
-   dest: /etc/nginx/nginx.conf
+# - name: Update Nginx Configuration
+#   template:
+#    src: nginx.conf
+#    dest: /etc/nginx/nginx.conf
 
-- name: Starting nginx services
-  systemd: 
-   daemon_reload: yes
-   enabled: yes
-   state: restarted
-   name: nginx
-  ignore_errors: yes
+# - name: Starting nginx services
+#   systemd: 
+#    daemon_reload: yes
+#    enabled: yes
+#    state: restarted
+#    name: nginx
+#   ignore_errors: yes
