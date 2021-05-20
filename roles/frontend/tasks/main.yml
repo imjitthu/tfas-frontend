@@ -21,7 +21,7 @@
 
 - name: Copy the HTDOCS content and deploy under the Nginx path
   copy:
-    src: static/
+    src: *
     dest: /usr/share/nginx/html
     remote_src: yes
 
