@@ -32,13 +32,13 @@ provisioner "local-exec" {
 }
 }
 
-# resource "aws_route53_record" "frontend" {
-#   zone_id = "${var.R53_ZONE_ID}"
-#   name = "${var.COMPONENT}.${var.DOMAIN}"
-#   type = "A"
-#   ttl = "300"
-#   records = [ aws_instance.frontend.public_ip ]
-# }
+resource "aws_route53_record" "frontend" {
+  zone_id = "${var.R53_ZONE_ID}"
+  name = "${var.COMPONENT}.${var.DOMAIN}"
+  type = "A"
+  ttl = "300"
+  records = [ aws_instance.frontend.public_ip ]
+}
 
 output "Frontend_PIP" {
   value = aws_instance.frontend.public_ip
