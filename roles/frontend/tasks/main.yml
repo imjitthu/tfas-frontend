@@ -23,6 +23,7 @@
   copy:
     src: static/
     dest: /usr/share/nginx/html
+  remote_src: yes
 
 # - name: Move Artifiact Files /usr/share/nginx/html/
 #   shell: |
