@@ -7,8 +7,6 @@ pipeline { //pipeline
         terraform 'terraformtool'
     }
 
-    tool name: 'terraformtool', type: 'terraform' 
-
     stages ('Setup Roboshop Application') { //stages
         stage ('Installing Frontend Server') { //Frontend stage
             steps { //Frontend steps
