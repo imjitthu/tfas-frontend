@@ -15,7 +15,7 @@ pipeline { //pipeline
             //         sh "terraform init"    
             //         sh "terraform apply -auto-approve"   
             //           } //with credentials
-            ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: '172.31.78.249,', playbook: './frontend.yml'
+            ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: './frontend.yml'
                 } //Frontend steps
             } //Frontend stage
         } //stages
