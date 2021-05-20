@@ -18,7 +18,7 @@ pipeline { //pipeline
                     git 'https://github.com/imjitthu/tfas-frontend.git'
                     terraform init   
                     terraform apply -auto-approve
-                      } //with credentials
+                    } //with credentials
             ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
                 } //Frontend steps
             } //Frontend stage
