@@ -21,9 +21,9 @@
 
 - name: Copy the HTDOCS content and deploy under the Nginx path
   copy:
-    src: ./*
+    src: static
     dest: /usr/share/nginx/html
-    remote_src: yes
+    #remote_src: yes
 
 # - name: Move Artifiact Files /usr/share/nginx/html/
 #   shell: |
