@@ -10,7 +10,6 @@ pipeline { //pipeline
     stages ('Setup Roboshop Application') { //stages
         stage ('Installing Frontend Server') { //Frontend stage
             steps { //Frontend steps
-            sh "cat frontend.yml; cat frontend.iv"
             withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     git 'https://github.com/imjitthu/tfas-frontend.git'
                     sh "terraform init"    
