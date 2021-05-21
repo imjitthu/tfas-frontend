@@ -3,10 +3,6 @@ pipeline { //pipeline
     agent any
     options { disableConcurrentBuilds() }
 
-    tools {
-        terraform 'terraformtool'
-    }
-
     stages ('Setup Roboshop Application') { //stages
         stage ('Installing Frontend Server') { //Frontend stage
             steps { //Frontend steps
