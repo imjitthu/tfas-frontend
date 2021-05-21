@@ -1,4 +1,4 @@
-- name: Setup RoboShop Project
+- name: Setup frontend RoboShop Project
   hosts: all
   vars:
     DOMAIN: jithendar.com
