@@ -16,12 +16,12 @@ pipeline { //pipeline
                 } //Frontend steps
             } //Frontend stage
         } //stages
-            post { 
-        always { 
-            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    //sh 'terraform init'
-                    sh 'terraform destroy -auto-approve'
-                    } //with credentials
-        }
-    }
+    //         post { 
+    //     always { 
+    //         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+    //                 //sh 'terraform init'
+    //                 sh 'terraform destroy -auto-approve'
+    //                 } //with credentials
+    //     }
+    // }
     } //pipeline
