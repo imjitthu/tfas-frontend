@@ -12,11 +12,17 @@ pipeline { //pipeline
             steps { //Frontend steps
             withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     git 'https://github.com/imjitthu/tfas-frontend.git'
-                    sh 'terraform destroy -auto-approve'
-                    //sh'terraform init ; terraform apply -auto-approve'
+                    //sh 'terraform destroy -auto-approve'
+                    sh'terraform init'
+                    sh 'terraform apply -auto-approve'
                     } //with credentials
             ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
                 } //Frontend steps
             } //Frontend stage
         } //stages
+            post { 
+        always { 
+            sh 'terraform destroy -auto-approve'
+        }
+    }
     } //pipeline
