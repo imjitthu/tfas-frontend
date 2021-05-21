@@ -1,14 +1,3 @@
-- name: Include Common Role for OS Prereqs
-  shell: | 
-    set-hostnem {{COMPONENT}}
-    echo FrontEnd Server is Ready
-  become: yes
-
-- name: Install NGINX
-  yum: 
-    name: nginx
-    state: present
-
 - name: Delete content from /usr/share/nginx/html
   file:
     state: absent
