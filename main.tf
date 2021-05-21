@@ -23,7 +23,7 @@ connection {
 
 provisioner "remote-exec" {
   inline = [ 
-    "set-hostname ${var.COMPONENT}"
+    "set-hostname ${var.COMPONENT}",
     "yum install nginx -y",
     ]
 }
