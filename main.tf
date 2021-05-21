@@ -16,13 +16,16 @@ resource "aws_instance" "frontend" {
 connection {
   host = aws_instance.frontend.public_ip
   type = "ssh"
-  user = "${var.USER}"
+  user = var.USER
   #private_key = file("${local.key_path}")
-  password = "${var.PASSWORD}"
+  password = var.PASSWORD
 }
 
 provisioner "remote-exec" {
-  inline = [ "yum install nginx -y" ]
+  inline = [ 
+    "set-hostname ${var.COMPONENT}"
+    "yum install nginx -y",
+    ]
 }
 
 provisioner "local-exec" {
