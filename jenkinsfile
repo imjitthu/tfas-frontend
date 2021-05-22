@@ -11,7 +11,7 @@ pipeline {
                         sh 'terraform init'
                         sh 'terraform plan'
                         } 
-                ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
+                //ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
                 } 
             } 
         }
