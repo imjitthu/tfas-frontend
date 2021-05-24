@@ -5,27 +5,30 @@ pipeline {
 
     parameters {
     choice(name: 'tfaction', choices: ['init', 'plan', 'apply -auto-approve', 'destroy -auto-approve'], description: 'Pick any action')
-    }
+               }
 
     environment {
         tfaction = "terraform ${params.tfaction}"
-                } 
+        invfile  = "frontend_inv"
+        playbook = "frontend.yml"
+                }
 
     stages ('Setup Roboshop Application') { 
-        stage ('Installing Frontend Server') { 
+        stage ('Installing shipping Server') { 
             steps { 
-                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        sh "${env.tfaction}"
-                        } 
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh "${env.tfaction}"
+                    }
             script {
                 if (params.tfaction == "apply -auto-approve") {
-                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
+                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: "${env.invfile}", playbook: "${env.invfile}"
+
                 }
                 else {
                     echo "terraform action is: ${env.tfaction}"
                     }
-                    }
+                    } 
                 } 
             } 
-        }
+        } 
     } 
