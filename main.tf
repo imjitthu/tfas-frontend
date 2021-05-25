@@ -29,7 +29,7 @@ provisioner "remote-exec" {
 }
 
 provisioner "local-exec" {
-  command = "echo ${aws_instance.frontend.public_ip} > frontend_inv"
+  command = "echo ${aws_instance.frontend.private_ip} > frontend_inv"
   #command = "ansible-playbook -i ${aws_instance.frontend.public_ip}, --private-key ${local.key_path} ${var.COMPONENT}.yml"
   #echo $IP component=${component} ansible_user=root ansible_password=DevOps321 >>inv
 }
