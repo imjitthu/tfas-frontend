@@ -5,11 +5,11 @@ pipeline {
 
     parameters {
     //choice(name: 'tfaction', choices: ['init', 'plan', 'apply -auto-approve', 'destroy -auto-approve'], description: 'Pick any action')
-    text(name: 'tfaction', defaultValue: 'terraform init', description: 'Enter the terraform command')
+    text(name: 'tfaction', defaultValue: '', description: 'Enter the terraform command')
                }
 
     environment {
-        tfaction = "terraform ${params.tfaction}"
+        tfaction = "${params.tfaction}"
         invfile  = "frontend_inv"
         playbook = "frontend.yml"
                 }
