@@ -11,8 +11,8 @@ data "aws_secretmanager_secret" "creds" {
   name = "SSH_ROOT"
 }
 
-data "aws_secretmanager_secret_version" "creds" {
-  secret_id = data.aws_secretmanager_secret.cred.id
+data "aws_secretsmanager_secret_version" "creds" {
+  secret_id = data.aws_secretsmanager_secret.cred.id
 }
 
 #Get the latest AMI from AWS with OWNER ID and Name Filter
